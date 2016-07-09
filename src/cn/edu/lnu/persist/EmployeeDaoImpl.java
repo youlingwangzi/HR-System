@@ -4,8 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import cn.edu.lnu.domain.Page;
+import cn.edu.lnu.domain.Staff;
+import cn.edu.lnu.util.Constants;
 import cn.edu.lnu.util.DbUtil;
 
 public class EmployeeDaoImpl implements EmployeeDao {
@@ -21,29 +25,53 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		try {
 			connection = DbUtil.getConnection();
 			
-			String sqlString = "select count(*) from employee";
+			String sqlString = "select count(*) from staff";
 			preparedStatement = connection.prepareStatement(sqlString);
-			preparedStatement.executeQuery();
+			resultSet = preparedStatement.executeQuery();
 			int totalNumber = 0;
 			while(resultSet.next()){
 				totalNumber = resultSet.getInt(1);
 			}
 			
-			page.setTotalNember(totalNumber);
+			page.setTotalNumber(totalNumber);
 			
-			int totalPage = 0;
+			int totalPage = totalNumber%Constants.ITEM_PER_PAGE==0?totalNumber/Constants.ITEM_PER_PAGE:(int)(totalNumber/Constants.ITEM_PER_PAGE)+1;
 			page.setTotalPage(totalPage);
 			
+			page.setCurrentPage(currentPage);
 			
-		} catch (ClassNotFoundException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
+			String sql2 = "select * from staff e,department d,job j where e.depart_id=d.depart_id and e.job_id=j.job_id limit ?,?";
+			preparedStatement = connection.prepareStatement(sql2);
+			preparedStatement.setInt(1, (currentPage-1)*Constants.ITEM_PER_PAGE);
+			preparedStatement.setInt(2, Constants.ITEM_PER_PAGE);
+			resultSet = preparedStatement.executeQuery();
+			
+			List<Staff> list = new ArrayList<Staff>();
+			
+			while(resultSet.next()){
+				Staff staff = new Staff();
+				staff.setStaffId(resultSet.getString("STAFF_ID"));
+				staff.setStaffName(resultSet.getString("STAFF_NAME"));
+				staff.setStaffEmail(resultSet.getString("STAFF_EMAIL"));
+				staff.setStaffPhone(resultSet.getString("STAFF_PHONE"));
+				staff.setEntryTime(resultSet.getDate("ENTRY_TIME"));
+				staff.setDeptNo(resultSet.getString("DEPART_ID"));
+				staff.setJobId(resultSet.getString("JOB_ID"));
+				
+				staff.setDeptName(resultSet.getString("DEPART_NAME"));
+				staff.setJobName(resultSet.getString("JOB_NAME"));
+				
+				list.add(staff);
+			}
+			
+			page.setList(list);
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
+		} finally{
+			DbUtil.closeAll(connection, preparedStatement, resultSet);
 		}
-		
-		return null;
+		return page;
 	}
 
 }
