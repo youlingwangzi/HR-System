@@ -50,7 +50,8 @@ public class JobDaoImpl implements JobDao {
 		Connection connection = null;
 		
 		connection = DbUtil.getConnection();
-		String sqlString = "insert into job(job_id,job_name,Lowest_pay,higest_pay) values(?,?,?,?)";
+		String sqlString = "insert into job"
+				+ "(job_id,job_name,lowest_pay,highes_pay) values(?,?,?,?)";
 		
 		PreparedStatement psPreparedStatement = null;
 		try {

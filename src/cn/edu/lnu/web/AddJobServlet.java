@@ -31,6 +31,7 @@ public class AddJobServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
 		String jobId = request.getParameter("job_id");
 		String jobName = request.getParameter("job_title");
 		String lowestPay = request.getParameter("min_salary");
@@ -43,7 +44,7 @@ public class AddJobServlet extends HttpServlet {
 		job.setHighstPay(Float.valueOf(highesPay));
 		
 		jobDao.addJob(job);
-		response.sendRedirect("/EmpViewServlet.jsp?page=1");
+		response.sendRedirect("JobViewServlet.do");
 	}
 
 }

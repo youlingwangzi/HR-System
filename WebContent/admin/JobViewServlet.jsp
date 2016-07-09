@@ -102,7 +102,7 @@ page language="java" contentType="text/html; charset=UTF-8"
 							%>
 					</table>
 					<p>
-						<a href="AddJobs.jsp.html">增加新职务种类</a>					</p>
+						<a href="admin/AddJobs.jsp">增加新职务种类</a>					</p>
 				</td>
 			</tr>
 		</table>

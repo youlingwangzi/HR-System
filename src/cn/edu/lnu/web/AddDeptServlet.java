@@ -44,6 +44,7 @@ public class AddDeptServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 
+		request.setCharacterEncoding("UTF-8");
 		String departId = request.getParameter("department_id");
 		String departName = request.getParameter("department_name");
 		String departAddress = request.getParameter("location_name");
@@ -54,7 +55,7 @@ public class AddDeptServlet extends HttpServlet {
 		department.setDepartAdrress(departAddress);
 		
 		departmentDao.addDepartment(department);
-		response.sendRedirect("admin/DepartViewServlet.jsp");
+		response.sendRedirect("DepartViewServlet.do");
 		
 	}
 

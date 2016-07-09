@@ -1,5 +1,10 @@
+<%@page import="cn.edu.lnu.web.AddJobServlet"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -29,7 +34,7 @@
 			align="center">
 			<tr>
 				<td align="center" valign="top">
-					<form name="form1" method="post" action="../AddJobsServlet.do">
+					<form name="form1" method="post" action="../AddJobServlet.do">
 						<table width="500" border="0" cellpadding="5" cellspacing="1"
 							bgcolor="#CCCCCC">
 							<tr>
@@ -75,7 +80,7 @@
 							</tr>
 							<tr>
 								<td height="24" colspan="2" align="center" bgcolor="#FFFFFF">
-									<input type="submit" name="Submit" value="提交" onClick="alert('增加新职务成功');location.href='JobsViewServlet.jsp'">
+									<input type="submit" name="Submit" value="提交" >
 									<input type="button" name="Submit2" value="取消"
 										onclick="history.back()">
 								</td>

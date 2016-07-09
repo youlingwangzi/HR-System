@@ -33,6 +33,7 @@ public class AddEmpServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
 		String staffName = request.getParameter("empname");
 		String staffEmail = request.getParameter("email");
 		String staffPhone = request.getParameter("phone_number");
@@ -51,7 +52,7 @@ public class AddEmpServlet extends HttpServlet {
 		staff.setDeptNo(departNo);
 		
 		employeeDao.addEmployee(staff);
-		response.sendRedirect("/EmpViewServlet.jsp?page=1");
+		response.sendRedirect("EmpViewServlet.do?page=1");
 	}
 
 }
