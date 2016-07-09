@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</tr>
 	<tr>
 		<td height="24" align="right" bgcolor="#FFFFFF">
-			<a href="admin/default.jsp.html">首页</a>
+			<a href="admin/default.jsp">首页</a>
 			<a href="DepartViewServlet.do">部门查询</a>
 			<a href="JobViewServlet.do">职务查询</a>
 			<a href="EmpViewServlet.do?page=1">员工查询</a>			

@@ -31,4 +31,14 @@ public class DbUtil {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void closeAll(Connection connection,PreparedStatement preparedStatement) {
+		try {
+			preparedStatement.close();
+			connection.close();
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+	}
 }

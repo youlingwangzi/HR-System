@@ -15,6 +15,7 @@ import cn.edu.lnu.persist.EmployeeDaoImpl;
 /**
  * Servlet implementation class EmpViewServlet
  */
+
 public class EmpViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private EmployeeDao empDao = new EmployeeDaoImpl();

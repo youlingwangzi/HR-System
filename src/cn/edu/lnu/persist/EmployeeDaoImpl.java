@@ -1,6 +1,7 @@
 package cn.edu.lnu.persist;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -73,6 +74,38 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			DbUtil.closeAll(connection, preparedStatement, resultSet);
 		}
 		return page;
+	}
+
+	@Override
+	public boolean addEmployee(Staff staff) {
+		// TODO 自动生成的方法存根
+		Connection connection = null;
+		
+		connection = DbUtil.getConnection();
+		String sqlString = "insert into staff(job_id,depart_id,staff_name,staff_email,staff_phone,entry_time,staff_pay) values(?,?,?,?,?,?,?)";
+		
+		PreparedStatement psPreparedStatement = null;
+		try {
+			psPreparedStatement = connection.prepareStatement(sqlString);
+		
+			psPreparedStatement.setString(1, staff.getJobId());
+			psPreparedStatement.setString(2, staff.getDeptNo());
+			psPreparedStatement.setString(3, staff.getStaffName());
+			psPreparedStatement.setString(4, staff.getStaffEmail());
+			psPreparedStatement.setString(5, staff.getStaffPhone());
+			psPreparedStatement.setDate(6, staff.getEntryTime());
+			psPreparedStatement.setFloat(7, staff.getStaffPay());
+			psPreparedStatement.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+			return false;
+		} finally{
+			DbUtil.closeAll(connection, psPreparedStatement);
+		}
+		
+		return true;
 	}
 
 }

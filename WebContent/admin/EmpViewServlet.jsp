@@ -158,7 +158,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</tr>
 					</table>
 					<p>
-						<a href="AddEmp.jsp.html">增加新员工</a>					</p>
+						<a href="admin/AddEmp.jsp">增加新员工</a>					</p>
 				</td>
 			</tr>
 		</table>
