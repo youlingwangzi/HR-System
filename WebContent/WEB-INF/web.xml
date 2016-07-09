@@ -8,6 +8,16 @@
     <servlet-name>EmpViewServlet</servlet-name>
     <url-pattern>/EmpViewServlet.do</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>DepartViewServlet</servlet-name>
+    <servlet-class>cn.edu.lnu.web.DepartViewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DepartViewServlet</servlet-name>
+    <url-pattern>/DepartViewServlet.do</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>Login.jsp</welcome-file>
   </welcome-file-list>
