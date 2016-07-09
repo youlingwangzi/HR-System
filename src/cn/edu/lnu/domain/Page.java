@@ -6,8 +6,9 @@ import java.util.List;
 public class Page implements Serializable {
 	private List list;
 	private int currentPage;
-	private int totalNember;
+	private int totalNumber;
 	private int totalPage;
+	
 	public int getTotalPage() {
 		return totalPage;
 	}
@@ -26,10 +27,10 @@ public class Page implements Serializable {
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = currentPage;
 	}
-	public int getTotalNember() {
-		return totalNember;
+	public int getTotalNumber() {
+		return totalNumber;
 	}
-	public void setTotalNember(int totalNember) {
-		this.totalNember = totalNember;
+	public void setTotalNumber(int totalNember) {
+		this.totalNumber = totalNember;
 	}
 }
