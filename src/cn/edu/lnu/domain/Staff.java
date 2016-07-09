@@ -9,7 +9,7 @@ public class Staff implements Serializable {
 	private String staffEmail;
 	private String StaffPhone;
 	private Date entryTime;
-	private String staffPay;
+	private float staffPay;
 	private String deptNo;
 	private String jobId;
 	
@@ -46,10 +46,10 @@ public class Staff implements Serializable {
 	public void setEntryTime(Date entryTime) {
 		this.entryTime = entryTime;
 	}
-	public String getStaffPay() {
+	public float getStaffPay() {
 		return staffPay;
 	}
-	public void setStaffPay(String staffPay) {
+	public void setStaffPay(float staffPay) {
 		this.staffPay = staffPay;
 	}
 	public String getDeptNo() {

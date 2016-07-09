@@ -57,6 +57,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				staff.setEntryTime(resultSet.getDate("ENTRY_TIME"));
 				staff.setDeptNo(resultSet.getString("DEPART_ID"));
 				staff.setJobId(resultSet.getString("JOB_ID"));
+				staff.setStaffPay(resultSet.getFloat("STAFF_PAY"));
 				
 				staff.setDeptName(resultSet.getString("DEPART_NAME"));
 				staff.setJobName(resultSet.getString("JOB_NAME"));
