@@ -46,4 +46,38 @@ public class DepartmentDaoImpl implements DepartmentDao {
 		return list;
 	}
 
+	@Override
+	public boolean addDepartment(Department department) {
+		// TODO 自动生成的方法存根
+		
+
+		Connection connection = null;
+		
+		connection = DbUtil.getConnection();
+		String sqlString = "insert into department "
+				+ "(depart_id,depart_name,depart_adrress) values(?,?,?)";
+		
+		PreparedStatement psPreparedStatement = null;
+		try {
+			psPreparedStatement = connection.prepareStatement(sqlString);
+		
+			psPreparedStatement.setString(1, department.getDepartNo());
+			psPreparedStatement.setString(2, department.getDepartName());
+			psPreparedStatement.setString(3, department.getDepartAdrress());
+			psPreparedStatement.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+			return false;
+		} finally{
+			DbUtil.closeAll(connection, psPreparedStatement);
+		}
+		
+		
+		return false;
+	}
+	
+	
+
 }

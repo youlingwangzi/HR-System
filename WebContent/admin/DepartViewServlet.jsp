@@ -98,7 +98,7 @@
 
 					</table>
 					<p>
-						<a href="AddDept.jsp.html">增加新部门</a>					</p>
+						<a href="admin/AddDept.jsp">增加新部门</a>					</p>
 				</td>
 			</tr>
 	</table>
