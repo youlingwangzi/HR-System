@@ -7,9 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.edu.lnu.domain.Page;
 import cn.edu.lnu.domain.Job;
-import cn.edu.lnu.util.Constants;
 import cn.edu.lnu.util.DbUtil;
 
 public class JobDaoImpl implements JobDao {
@@ -45,6 +43,34 @@ public class JobDaoImpl implements JobDao {
 			DbUtil.closeAll(connection, preparedStatement, resultSet);
 		}
 		return list;
+	}
+	
+	public boolean addJob(Job job) {
+		// TODO 自动生成的方法存根
+		Connection connection = null;
+		
+		connection = DbUtil.getConnection();
+		String sqlString = "insert into job(job_id,job_name,Lowest_pay,higest_pay) values(?,?,?,?)";
+		
+		PreparedStatement psPreparedStatement = null;
+		try {
+			psPreparedStatement = connection.prepareStatement(sqlString);
+		
+			psPreparedStatement.setString(1, job.getJobId());
+			psPreparedStatement.setString(2, job.getJobName());
+			psPreparedStatement.setFloat(3, job.getLowestPay());
+			psPreparedStatement.setFloat(4, job.getHighstPay());
+			psPreparedStatement.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+			return false;
+		} finally{
+			DbUtil.closeAll(connection, psPreparedStatement);
+		}
+		
+		return true;
 	}
 
 }
