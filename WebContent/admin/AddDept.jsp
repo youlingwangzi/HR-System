@@ -8,6 +8,7 @@ String adminName = (String)session.getAttribute("adminName");
 int adminAuthority = 0;
 if(adminName == null){ response.sendRedirect("../Login.jsp");} 
 else{ adminAuthority = Integer.valueOf((String)session.getAttribute("adminAuthority"));}
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <jsp:include page="header.jsp" />

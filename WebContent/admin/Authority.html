@@ -1,0 +1,19 @@
+﻿<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript">
+	var num = 10;
+
+	function jump(){
+		num --;
+		var s1 = document.getElementById("s1");
+		s1.innerHTML = num;		
+		if (num <= 0)
+			location.href = "default.jsp";		
+	}
+
+	window.setInterval("jump()",1000);
+</script>
+<p>
+您的权限不足，<span id="s1">10</span>秒后跳转到首页
+<a href="default.jsp">单击此处到首页</a>
+</p>
