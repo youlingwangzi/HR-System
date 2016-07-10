@@ -118,7 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<%=e.getDeptName() %>
 								</td>
 								<td height="24" bgcolor="#FFFFFF">
-									<a href="UpdateEmp.jsp.html">修改</a>
+									<a href="admin/UpdateEmp.jsp?staff_id=<%=e.getStaffId() %>">修改</a>
 									<a href="javascript:del(100)">删除</a>
 									<a href="PhotoViewServlet.html" target="_blank">照片</a>								</td>
 							</tr>

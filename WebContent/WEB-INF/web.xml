@@ -32,8 +32,7 @@
     <servlet-name>AddEmpServlet</servlet-name>
     <url-pattern>/AddEmpServlet.do</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <servlet-name>AddDeptServlet</servlet-name>
     <servlet-class>cn.edu.lnu.web.AddDeptServlet</servlet-class>
   </servlet>
@@ -41,7 +40,6 @@
     <servlet-name>AddDeptServlet</servlet-name>
     <url-pattern>/AddDeptServlet.do</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AddJobServlet</servlet-name>
     <servlet-class>cn.edu.lnu.web.AddJobServlet</servlet-class>
@@ -50,7 +48,14 @@
     <servlet-name>AddJobServlet</servlet-name>
     <url-pattern>/AddJobServlet.do</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>UpdateEmpServlet</servlet-name>
+    <servlet-class>cn.edu.lnu.web.UpdateEmpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateEmpServlet</servlet-name>
+    <url-pattern>/UpdateEmpServlet.do</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>Login.jsp</welcome-file>
   </welcome-file-list>

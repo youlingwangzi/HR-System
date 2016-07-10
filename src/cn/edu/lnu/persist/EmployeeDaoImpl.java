@@ -108,4 +108,74 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return true;
 	}
 
+	@Override
+	public boolean updateEmployee(Staff staff) {
+		// TODO 自动生成的方法存根
+		
+		Connection connection = null;
+		
+		connection = DbUtil.getConnection();
+		String sqlString = "UPDATE staff SET JOB_ID=?,DEPART_ID=?,STAFF_NAME=?,STAFF_EMAIL=?,STAFF_PHONE=?,ENTRY_TIME=?,STAFF_PAY=? WHERE STAFF_ID=?";
+		PreparedStatement preparedStatement = null;
+		try {
+			preparedStatement = connection.prepareStatement(sqlString);
+		
+			preparedStatement.setString(1, staff.getJobId());
+			preparedStatement.setString(2, staff.getDeptNo());
+			preparedStatement.setString(3, staff.getStaffName());
+			preparedStatement.setString(4, staff.getStaffEmail());
+			preparedStatement.setString(5, staff.getStaffPhone());
+			preparedStatement.setDate(6, staff.getEntryTime());
+			preparedStatement.setFloat(7, staff.getStaffPay());
+			preparedStatement.setString(8, staff.getStaffId());
+			
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+			return false;
+		} finally{
+			DbUtil.closeAll(connection, preparedStatement);
+		}
+		return true;
+	}
+
+	@Override
+	public Staff findEmployeeById(int staffId) {
+		// TODO 自动生成的方法存根
+		Staff staff = new Staff();
+		Connection connection = DbUtil.getConnection();
+		
+		String sqlString = "select * from staff where staff_id = ?";
+		
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			preparedStatement = connection.prepareStatement(sqlString);
+			
+			preparedStatement.setInt(1, staffId);
+			
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				staff.setStaffId(resultSet.getString("STAFF_ID"));
+				staff.setStaffName(resultSet.getString("STAFF_NAME"));
+				staff.setStaffEmail(resultSet.getString("STAFF_EMAIL"));
+				staff.setStaffPhone(resultSet.getString("STAFF_PHONE"));
+				staff.setEntryTime(resultSet.getDate("ENTRY_TIME"));
+				staff.setDeptNo(resultSet.getString("DEPART_ID"));
+				staff.setJobId(resultSet.getString("JOB_ID"));
+				staff.setStaffPay(resultSet.getFloat("STAFF_PAY"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} finally{
+			DbUtil.closeAll(connection, preparedStatement);
+		}
+		
+		return staff;
+	}
+
 }
