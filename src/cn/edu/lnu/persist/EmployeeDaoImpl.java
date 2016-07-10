@@ -1,7 +1,6 @@
 package cn.edu.lnu.persist;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,6 +14,7 @@ import cn.edu.lnu.util.DbUtil;
 
 public class EmployeeDaoImpl implements EmployeeDao {
 
+	@SuppressWarnings("resource")
 	@Override
 	public Page findEmployeeByPage(int currentPage) {
 		// TODO 自动生成的方法存根

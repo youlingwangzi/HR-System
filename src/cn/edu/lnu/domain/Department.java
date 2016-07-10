@@ -3,6 +3,10 @@ package cn.edu.lnu.domain;
 import java.io.Serializable;
 
 public class Department implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7718820358413770177L;
 	private String departNo;
 	private String departName;
 	private String departAdrress;

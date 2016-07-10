@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.sql.Date;
 
 public class Staff implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8069110293603341470L;
 	private String staffId;
 	private String staffName;
 	private String staffEmail;
