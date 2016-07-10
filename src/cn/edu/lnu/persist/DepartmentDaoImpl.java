@@ -77,6 +77,33 @@ public class DepartmentDaoImpl implements DepartmentDao {
 		
 		return false;
 	}
+
+	@Override
+	public boolean deleteDepartmentById(String depatmentId) {
+		// TODO 自动生成的方法存根
+		
+		Connection connection = null;
+		connection = DbUtil.getConnection();
+		String sqlString = "DELETE FROM department WHERE depart_id = ? ";
+		
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			preparedStatement = connection.prepareStatement(sqlString);
+			
+			preparedStatement.setString(1, depatmentId);
+			
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} finally{
+			DbUtil.closeAll(connection, preparedStatement);
+		}
+		
+		
+		return true;
+	}
 	
 	
 

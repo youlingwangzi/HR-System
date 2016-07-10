@@ -17,8 +17,9 @@
 								
 				//如果单击确定，则执行DelDeptServlet，并且传入部门编号
 				if (flag) {
+					location.href = "DeleteDeptServlet.do?department_id=" + department_id + "";
 					alert("删除成功");
-					location.href = "DeptViewServlet.html";
+					location.href = "DepartViewServlet.do";
 				}
 			}
 		</script>
@@ -89,7 +90,7 @@
 								</td>
 								<td bgcolor="#FFFFFF">
 									<a href="UpdateDept.jsp.html">修改</a>
-									<a href="javascript:del(10)">删除</a>								</td>
+									<a href="javascript:del('<%=department.getDepartNo() %>')">删除</a>								</td>
 							</tr>
 							
 						<%

@@ -23,8 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				var flag = window.confirm("你确定要删除" + employee_id + "号员工吗?");
 				//如果单击确定，则执行DelEmpServlet，并且传入员工编号
 				if (flag) {
+					location.href = "DeleteEmpServlet.do?empid=" + employee_id + "";
 					alert("删除成功");
-					location.href = "EmpViewServlet.html";
+					location.href = "EmpViewServlet.do?page=1";
 				}
 			}
 		</script>
@@ -119,7 +120,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</td>
 								<td height="24" bgcolor="#FFFFFF">
 									<a href="admin/UpdateEmp.jsp?staff_id=<%=e.getStaffId() %>">修改</a>
-									<a href="javascript:del(100)">删除</a>
+									<a href="javascript:del(<%=e.getStaffId()%>)">删除</a>
 									<a href="PhotoViewServlet.html" target="_blank">照片</a>								</td>
 							</tr>
 							<%

@@ -178,4 +178,25 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return staff;
 	}
 
+	@Override
+	public boolean deleteEmployeeById(int staffId) {
+		// TODO 自动生成的方法存根
+		String sqlsString = "DELETE FROM staff WHERE staff_id = ? ";
+		
+		Connection connection = DbUtil.getConnection();
+		PreparedStatement preparedStatement = null;
+		try {
+			preparedStatement = connection.prepareStatement(sqlsString);
+			preparedStatement.setInt(1, staffId);
+			
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} finally{
+			DbUtil.closeAll(connection, preparedStatement);
+		}
+		return true;
+	}
+
 }

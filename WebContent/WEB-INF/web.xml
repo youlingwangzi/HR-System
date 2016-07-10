@@ -56,6 +56,33 @@
     <servlet-name>UpdateEmpServlet</servlet-name>
     <url-pattern>/UpdateEmpServlet.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteEmpServlet</servlet-name>
+    <servlet-class>cn.edu.lnu.web.DeleteEmpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteEmpServlet</servlet-name>
+    <url-pattern>/DeleteEmpServlet.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteDeptServlet</servlet-name>
+    <servlet-class>cn.edu.lnu.web.DeleteDeptServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteDeptServlet</servlet-name>
+    <url-pattern>/DeleteDeptServlet.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>DeleteJobServlet</servlet-name>
+    <servlet-class>cn.edu.lnu.web.DeleteJobServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteJobServlet</servlet-name>
+    <url-pattern>/DeleteJobServlet.do</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>Login.jsp</welcome-file>
   </welcome-file-list>

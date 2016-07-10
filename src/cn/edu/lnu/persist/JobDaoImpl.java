@@ -74,4 +74,30 @@ public class JobDaoImpl implements JobDao {
 		return true;
 	}
 
+	@Override
+	public boolean deleteJobById(String jobId) {
+		// TODO 自动生成的方法存根
+		
+		Connection connection = null;
+		connection = DbUtil.getConnection();
+		String sqlString = "DELETE FROM job WHERE job_id = ?";
+		
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			preparedStatement = connection.prepareStatement(sqlString);
+			
+			preparedStatement.setString(1, jobId);
+			
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}finally{
+			DbUtil.closeAll(connection, preparedStatement);
+		}
+		
+		return true;
+	}
+
 }

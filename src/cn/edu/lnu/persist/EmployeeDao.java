@@ -8,4 +8,5 @@ public interface EmployeeDao {
 	public boolean addEmployee(Staff staff);
 	public boolean updateEmployee(Staff staff);
 	public Staff findEmployeeById(int staffId);
+	public boolean deleteEmployeeById(int staffId);
 }

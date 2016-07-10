@@ -19,8 +19,9 @@ page language="java" contentType="text/html; charset=UTF-8"
 								
 				//如果单击确定，则执行DelJobsServlet，并且传入职务编号
 				if (flag) {
+					location.href = "DeleteJobServlet.do?job_id=" + job_id + "";
 					alert("删除成功");
-					location.href = "JobsViewServlet.html";
+					location.href = "JobViewServlet.do";
 				}
 			}
 		</script>
@@ -94,7 +95,7 @@ page language="java" contentType="text/html; charset=UTF-8"
 								</td>
 								<td height="24" bgcolor="#FFFFFF">
 									<a href="UpdateJobs.jsp.html">修改</a>
-									<a href="javascript:del('WY')">删除</a>								</td>
+									<a href="javascript:del('<%=job.getJobId() %>')">删除</a>								</td>
 							</tr>
 						
 							<%
