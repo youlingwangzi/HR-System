@@ -1,3 +1,11 @@
+<%@page import="cn.edu.lnu.persist.DepartmentDaoImpl"%>
+<%@page import="cn.edu.lnu.persist.DepartmentDao"%>
+<%@page import="cn.edu.lnu.domain.Department"%>
+<%@page import="cn.edu.lnu.persist.JobDaoImpl"%>
+<%@page import="cn.edu.lnu.persist.JobDao"%>
+<%@page import="cn.edu.lnu.domain.Job"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="cn.edu.lnu.web.AddEmpServlet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -111,37 +119,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 										<!-- 循环输出所有的职务option -->
 										
-											<option value="001">程序员</option>
+										<%
+											List<Job> jobList = new ArrayList<Job>();
+											JobDao jobDao = new JobDaoImpl();
+											jobList = jobDao.findJobs();
+											
+											for(int i = 0;i<jobList.size();i++){
+												
+										%>
 										
-											<option value="002">前端工程师</option>
+											<option value="<%=jobList.get(i).getJobId() %>"><%=jobList.get(i).getJobName() %></option>
 										
+										<%
+											}
+										%>
 
 									</select>
 
 									<!-- 隐藏表单元素：存储每种职务的最低和最高工资 -->
-									
-										<input type="hidden" name="minWY" value="1500"/>
-										<input type="hidden" name="maxWY" value="3000"/>							
-									
-										<input type="hidden" name="minFWY" value="800"/>
-										<input type="hidden" name="maxFWY" value="2000"/>							
-									
-										<input type="hidden" name="minCHSH" value="1500"/>
-										<input type="hidden" name="maxCHSH" value="9999"/>							
-									
-										<input type="hidden" name="minBAN" value="800"/>
-										<input type="hidden" name="maxBAN" value="2400"/>							
-									
-										<input type="hidden" name="minJL" value="3000"/>
-										<input type="hidden" name="maxJL" value="9999"/>							
+										<%
+										for(int i = 0; i<jobList.size();i++){
+											
+										
+										%>
+										<input type="hidden" name="min_pay" value="<%=jobList.get(i).getLowestPay() %>"/>
+										<input type="hidden" name="max_pay" value="<%=jobList.get(i).getHighstPay() %>"/>							
+										<%
+										}
+										%>						
 									
 
-									工资范围
-									<input name="min_salary" type="text" id="min_salary" size="10"
+									<!--input name="min_salary" type="text" id="min_salary" size="10"
 										readonly>
+									工资范围
 									~
 									<input name="max_salary" type="text" id="max_salary" size="10"
-										readonly>
+										readonly-->
 								</td>
 							</tr>
 							<tr>
@@ -164,10 +177,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										</option>
 
 										<!-- 循环输出所有的部门的option -->
-										
-											<option value="1">市场部</option>										
-										
-											<option value="2">研发部</option>										
+										<%
+										List<Department> departmentList = new ArrayList<Department>();
+										DepartmentDao departmentDao = new DepartmentDaoImpl();
+										departmentList = departmentDao.findDepartments();
+										for(int i = 0;i<departmentList.size();i++){
+										%>
+											<option value="<%=departmentList.get(i).getDepartNo() %>"><%=departmentList.get(i).getDepartName() %></option>										
+										<%
+										}
+										%>								
 										
 									</select>
 								</td>
