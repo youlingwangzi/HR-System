@@ -72,8 +72,6 @@
     <servlet-name>DeleteDeptServlet</servlet-name>
     <url-pattern>/DeleteDeptServlet.do</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <servlet-name>DeleteJobServlet</servlet-name>
     <servlet-class>cn.edu.lnu.web.DeleteJobServlet</servlet-class>
@@ -82,8 +80,7 @@
     <servlet-name>DeleteJobServlet</servlet-name>
     <url-pattern>/DeleteJobServlet.do</url-pattern>
   </servlet-mapping>
-  
-<servlet>
+  <servlet>
     <servlet-name>UpdateDepartServlet</servlet-name>
     <servlet-class>cn.edu.lnu.web.UpdateDepartServlet</servlet-class>
   </servlet>
@@ -99,8 +96,6 @@
     <servlet-name>UpdateJobServlet</servlet-name>
     <url-pattern>/UpdateJobServlet.do</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>cn.edu.lnu.web.LoginServlet</servlet-class>
@@ -109,7 +104,17 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet.do</url-pattern>
   </servlet-mapping>
-
+  
+  
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>cn.edu.lnu.web.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/LogoutServlet.do</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>Login.jsp</welcome-file>
   </welcome-file-list>

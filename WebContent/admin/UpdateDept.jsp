@@ -17,31 +17,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 String postDepartId = request.getParameter("depart_id");//用request得到 
  %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-		<title>更新部门数据</title>
-		<link rel="stylesheet" type="text/css" href="../css/style.css">
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	</head>
-<body>
-		<!-- 页面头部 -->
-		<table width="950" border="0" align="center" cellpadding="0"
-	cellspacing="0">
-          <tr>
-            <td height="80" bgcolor="#FFFFFF"><img src="../img/bannal.jpg" width="950"
-				height="80"> </td>
-          </tr>
-          <tr>
-            <td height="24" align="right" bgcolor="#FFFFFF"><a href="default.jsp">首页</a> <a href="DeptViewServlet.html">部门查询</a> <a href="JobsViewServlet.html">职务查询</a> <a href="EmpViewServlet.html">员工查询</a> <a href="logout.jsp.html">退出登陆</a> </td>
-          </tr>
-          <tr>
-            <td height="24" align="right" bgcolor="#0099CC"> 当前用户：admin 身份：
-              
-              管理员 </td>
-          </tr>
-        </table>
-		<!-- 页面内容 -->
-		<table border="0" width="950" height="350" bgcolor="#ffffff"
+
+<jsp:include page="header.jsp" />
+
+<script language = "javascript">
+$(document).ready(function(){
+	$(".cat_list_dt").siblings().hide();
+	$(".cat_list_dt").click(function(){
+		if($(this).siblings().is(":hidden")){
+			$(this).siblings().show(200);
+		}else{
+			$(this).siblings().hide(200);
+		}
+	});
+});
+</script>
+
+<table>
+<tr>
+<td id = "bar">
+<table>
+<jsp:include page="UserCenter.jsp" />
+<tr><td><a class = "login_button" href = "../LogoutServlet.do">注销●</a></td></tr>
+<tr><td class = "bar_line" ></td></tr>
+<tr><td>
+<dl></br>
+	<dt class = cat_list_dt_on><h3>管理系统</h3></dt>
+	<dd><p class = articleList><a href = 'default.jsp'>▎主页</a></p></dd></br>
+	<dd><p class = articleList><a href = '../DepartViewServlet.do'>▎部门查询</a></p></dd>
+	<dd><p class = articleList><a href = '../JobViewServlet.do'>▎职务查询</a></p></dd>
+	<dd><p class = articleList><a href = '../EmpViewServlet.do?page=1'>▎员工查询</a></p></dd></dl>
+</dl>
+</td></tr>
+</table>
+</td>
+
+<td id = "main_body">
+
+<h1>更新部门信息</h1>
+<table border="0" width="700" height="350" bgcolor="#ffffff"
 			align="center">
 			<tr>
 				<td align="center" valign="top">
@@ -106,21 +120,8 @@ String postDepartId = request.getParameter("depart_id");//用request得到
 			</tr>
 		</table>
 
-		<!-- 页面底部 -->
-		
-<table width="950" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
-  <tr>
-    <td><hr></td>
-  </tr>
-  <tr>
-    <td align="center">©版权所有</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
+</td>
+</tr>
 </table>
-	</body>
-</html>
+
+<jsp:include page="footer.jsp" />

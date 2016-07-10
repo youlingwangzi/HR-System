@@ -2,73 +2,62 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String adminName = (String)session.getAttribute("adminName");
+int adminAuthority = 0;
+if(adminName == null){ response.sendRedirect("../Login.jsp");} 
+else{ adminAuthority = Integer.valueOf((String)session.getAttribute("adminAuthority"));}
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <base href="<%=basePath%>">
-    <title>首页</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  </head>
-  
-  <body>
-		<!-- 页面头部 -->
-		
+<jsp:include page="header.jsp" />
 
 
-<table width="950" border="0" align="center" cellpadding="0"
-	cellspacing="0">
-	<tr>
-		<td height="80" bgcolor="#FFFFFF">
-			<img src="img/bannal.jpg" width="950"
-				height="80">
-		</td>
-	</tr>
-	<tr>
-		<td height="24" align="right" bgcolor="#FFFFFF">
-			<a href="admin/default.jsp">首页</a>
-			<a href="DepartViewServlet.do">部门查询</a>
-			<a href="JobViewServlet.do">职务查询</a>
-			<a href="EmpViewServlet.do?page=1">员工查询</a>			
-			<a href="logout.jsp.html">退出登陆</a>		</td>
-	</tr>
-	<tr>
-		<td height="24" align="right" bgcolor="#0099CC">
-			当前用户：admin 身份：
-			
-				管理员
-			
-			
-		</td>
-	</tr>
+<table>
+<tr>
+<td id = "bar">
+<table>
+<jsp:include page="UserCenter.jsp" />
+<tr><td><a class = "login_button" href = "../LogoutServlet.do">注销●</a></td></tr>
+<tr><td class = "bar_line" ></td></tr>
+<tr><td>
+<dl></br>
+	<dt class = cat_list_dt_on><h3>管理系统</h3></dt>
+	<dd><p class = articleList><a href = 'default.jsp'>▎主页</a></p></dd></br>
+	<dd><p class = articleList><a href = '../DepartViewServlet.do'>▎部门查询</a></p></dd>
+	<dd><p class = articleList><a href = '../JobViewServlet.do'>▎职务查询</a></p></dd>
+	<dd><p class = articleList><a href = '../EmpViewServlet.do?page=1'>▎员工查询</a></p></dd></dl>
+</dl>
+</td></tr>
+</table>
+</td>
+
+<td id = "main_body">
+
+<h1>欢迎来到档案管理系统</h1>
+<table align = center>
+<tr align = center>
+	<td border = 0 style = "width:300px"><a href = '../DepartViewServlet.do'> <img src = "../img/fileIcon.jpg" style = "width:150px"> </a></td>
+	<td border = 0 style = "width:300px"><a href = '../JobViewServlet.do'> <img src = "../img/userIcon.jpg" style = "width:150px"> </a></td>
+</tr>
+
+<tr align = center>
+	<td border = 0><h2>部门查询</h2></td>
+	<td border = 0><h2>职务查询</h2></td>
+</tr>
+
+
+<tr align = center>
+	<td border = 0 style = "width:300px"><a href = '../EmpViewServlet.do?page=1'> <img src = "../img/staffIcon.gif" style = "width:150px"> </a></td>
+</tr>
+
+<tr align = center>
+	<td border = 0><h2>员工查询</h2></td>
+</tr>
+
 </table>
 
-		<!-- 页面内容 -->
-		<table border="0" width="950" height="350" bgcolor="#ffffff" align="center">
-			<tr>
-				<td align="center">
-					您已经登陆到XXX人力资源管理系统，请使用
-				</td>
-			</tr>
-		</table>
-
-		<!-- 页面底部 -->
-		
-<table width="950" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
-  <tr>
-    <td><hr></td>
-  </tr>
-  <tr>
-    <td align="center">©版权所有</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
+</td>
+</tr>
 </table>
-	</body>
-</html>
+
+<jsp:include page="footer.jsp" />

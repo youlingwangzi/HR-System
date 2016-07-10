@@ -1,13 +1,18 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@page import="cn.edu.lnu.domain.Department"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-		<title>部门数据</title>
-		<link rel="stylesheet" type="text/css" href="../css/style.css">
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String adminName = (String)session.getAttribute("adminName");
+int adminAuthority = 0;
+if(adminName == null){ response.sendRedirect("../Login.jsp");} 
+else{ adminAuthority = Integer.valueOf((String)session.getAttribute("adminAuthority"));}
+%>
+
+<!DOCTYPE HTML>
+
+<jsp:include page="header.jsp" />
 
 		<script type="text/javascript">
 			//****************-删除确认***************
@@ -24,31 +29,29 @@
 			}
 		</script>
 
-	</head>
-<body>
-		<!-- 页面头部 -->
-		<table width="950" border="0" align="center" cellpadding="0"
-	cellspacing="0">
-          <tr>
-            <td height="80" bgcolor="#FFFFFF"><img src="img/bannal.jpg" width="950"
-				height="80"> </td>
-          </tr>
-          <tr>
-            <td height="24" align="right" bgcolor="#FFFFFF">
-            <a href="default.jsp.html">首页</a> 
-            <a href="DeptViewServlet.html">部门查询</a> 
-            <a href="JobsViewServlet.html">职务查询</a> 
-            <a href="EmpViewServlet.do?page=1">员工查询</a> 
-            <a href="logout.jsp.html">退出登陆</a> </td>
-          </tr>
-          <tr>
-            <td height="24" align="right" bgcolor="#0099CC"> 当前用户：admin 身份：
-              
-              管理员 </td>
-          </tr>
-        </table>
-		<!-- 页面内容 -->
-<table border="0" width="950" height="350" bgcolor="#ffffff"
+<table>
+<tr>
+<td id = "bar">
+<table>
+<jsp:include page="UserCenter.jsp" />
+<tr><td><a class = "login_button" href = "LogoutServlet.do">注销●</a></td></tr>
+<tr><td class = "bar_line" ></td></tr>
+<tr><td>
+<dl></br>
+	<dt class = cat_list_dt_on><h3>管理系统</h3></dt>
+	<dd><p class = articleList><a href = 'admin/default.jsp'>▎主页</a></p></dd></br>
+	<dd><p class = articleList><a href = 'DepartViewServlet.do'>▎部门查询</a></p></dd>
+	<dd><p class = articleList><a href = 'JobViewServlet.do'>▎职务查询</a></p></dd>
+	<dd><p class = articleList><a href = 'EmpViewServlet.do?page=1'>▎员工查询</a></p></dd></dl>
+</dl>
+</td></tr>
+</table>
+</td>
+
+<td id = "main_body">
+
+<h1>部门查询</h1>
+		<table border="0" width="700" height="350" bgcolor="#ffffff"
 			align="center">
 			<tr>
 				<td align="center" valign="top">
@@ -64,9 +67,11 @@
 							<th width="37%" bgcolor="#FFCC00">
 								部门地址
 							</th>
+							<%if(adminAuthority == 1){ %>
 							<th width="21%" bgcolor="#FFCC00">
 								操作
 							</th>
+							<%} %>
 						</tr>
 
 						<!-- 循环输出部门记录 -->
@@ -88,9 +93,12 @@
 								<td bgcolor="#FFFFFF">
 									<%=department.getDepartAdrress() %>
 								</td>
+							<%if(adminAuthority == 1){ %>
 								<td bgcolor="#FFFFFF">
 									<a href="admin/UpdateDept.jsp?depart_id=<%=department.getDepartNo() %>">修改</a>
 									<a href="javascript:del('<%=department.getDepartNo() %>')">删除</a>								</td>
+							
+							<%} %>
 							</tr>
 							
 						<%
@@ -98,27 +106,17 @@
 						%>
 
 					</table>
+					
+							<%if(adminAuthority == 1){ %>
 					<p>
 						<a href="admin/AddDept.jsp">增加新部门</a>					</p>
+						<%} %>
 				</td>
 			</tr>
 	</table>
 
-		<!-- 页面底部 -->
-		
-<table width="950" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
-  <tr>
-    <td><hr></td>
-  </tr>
-  <tr>
-    <td align="center">©版权所有</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
+</td>
+</tr>
 </table>
-	</body>
-</html>
+
+<jsp:include page="footer.jsp" />
