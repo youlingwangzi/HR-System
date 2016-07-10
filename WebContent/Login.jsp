@@ -2,6 +2,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String error = request.getParameter("error");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -16,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-		<form name="form1" method="post" action="LoginServlet">
+		<form name="form1" method="post" action="LoginServlet.do">
 			<table width="300" border="0" align="center" cellpadding="4"
 				cellspacing="1" bgcolor="#FF9900">
 				<tr>
@@ -29,7 +30,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						管理账号
 					</td>
 					<td width="204" height="24" bgcolor="#FFFFFF">
-						<input name="adminname" type="text" id="adminname" class="input1">
+						<input name="adminname" type="text" id="adminname" class="input1" 
+						value="<%if(error!=null){if(error.equals("wrongPassword")){%>用户名密码错误<%}else{ %>用户不存在<%} %><%} %>"
+						>
 					</td>
 				</tr>
 				<tr>
@@ -54,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 				<tr>
 					<td height="24" colspan="2" align="center" bgcolor="#FFFFFF">
-						<input type="button" name="Submit" value="进入系统" onClick="location.href='admin/default.jsp'">
+						<input type="submit" name="Submit" value="进入系统">
 						&nbsp;&nbsp;
 						<input type="hidden" name="targetURL" value="">
 					</td>
