@@ -15,7 +15,7 @@ else{ adminAuthority = Integer.valueOf((String)session.getAttribute("adminAuthor
 		<%
 	}
 	else{%>
-		</br><h3><%=adminName %>同学，你好！<br/>欢迎你！</h3></br>
+		</br><h3><%=adminName %>，你好！<br/>欢迎你！</h3></br>
 		<%
 	}
 %>
