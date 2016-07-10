@@ -33,7 +33,7 @@ else{ adminAuthority = Integer.valueOf((String)session.getAttribute("adminAuthor
 
 <td id = "main_body">
 
-<h1>欢迎来到档案管理系统</h1>
+<h1>欢迎来到皇家人事管理系统</h1>
 <table align = center>
 <tr align = center>
 	<td border = 0 style = "width:300px"><a href = '../DepartViewServlet.do'> <img src = "../img/fileIcon.jpg" style = "width:150px"> </a></td>
