@@ -89,7 +89,7 @@
 									<%=department.getDepartAdrress() %>
 								</td>
 								<td bgcolor="#FFFFFF">
-									<a href="UpdateDept.jsp.html">修改</a>
+									<a href="admin/UpdateDept.jsp?depart_id=<%=department.getDepartNo() %>">修改</a>
 									<a href="javascript:del('<%=department.getDepartNo() %>')">删除</a>								</td>
 							</tr>
 							

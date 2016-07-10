@@ -3,39 +3,29 @@ package cn.edu.lnu.web;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.edu.lnu.domain.Department;
 import cn.edu.lnu.persist.DepartmentDao;
 import cn.edu.lnu.persist.DepartmentDaoImpl;
 
 /**
- * Servlet implementation class DeleteDeptServlet
+ * Servlet implementation class UpdateEmpServlet
  */
-public class DeleteDeptServlet extends HttpServlet {
+@WebServlet("/UpdateEmpServlet.do")
+public class UpdateDepartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	DepartmentDao departmentDao = new DepartmentDaoImpl();
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DeleteDeptServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
+	DepartmentDao departmentdao = new DepartmentDaoImpl();
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
-		String depatmentId = request.getParameter("department_id");
-		
-		departmentDao.deleteDepartmentById(depatmentId);
-		response.sendRedirect("EmpViewServlet.do?page=1");
-		
+		doPost(request, response);
 	}
 
 	/**
@@ -43,7 +33,19 @@ public class DeleteDeptServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		request.setCharacterEncoding("UTF-8");
+		String departName = request.getParameter("department_name");
+		String departAdrress = request.getParameter("location_name");
+		String departId = request.getParameter("department_id");
+
+		Department department = new Department();
+		department.setDepartName(departName);
+		department.setDepartAdrress(departAdrress);
+		department.setDepartNo(departId);
+		
+		departmentdao.updateDepartment(department);
+		response.sendRedirect("DepartViewServlet.do");
 	}
 
 }

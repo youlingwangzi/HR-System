@@ -83,6 +83,23 @@
     <url-pattern>/DeleteJobServlet.do</url-pattern>
   </servlet-mapping>
   
+<servlet>
+    <servlet-name>UpdateDepartServlet</servlet-name>
+    <servlet-class>cn.edu.lnu.web.UpdateDepartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateDepartServlet</servlet-name>
+    <url-pattern>/UpdateDepartServlet.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UpdateJobServlet</servlet-name>
+    <servlet-class>cn.edu.lnu.web.UpdateJobServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateJobServlet</servlet-name>
+    <url-pattern>/UpdateJobServlet.do</url-pattern>
+  </servlet-mapping>
+
   <welcome-file-list>
     <welcome-file>Login.jsp</welcome-file>
   </welcome-file-list>

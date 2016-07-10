@@ -100,4 +100,61 @@ public class JobDaoImpl implements JobDao {
 		return true;
 	}
 
+	public Job findJobById(String jobId) {
+		// TODO 自动生成的方法存根
+		Job job = new Job();
+		Connection connection = DbUtil.getConnection();
+		
+		String sqlString = "select * from job where JOB_ID = ?";
+		
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try{
+			preparedStatement = connection.prepareStatement(sqlString);
+			preparedStatement.setString(1, jobId);
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				job.setJobId(resultSet.getString("JOB_ID"));
+				job.setJobName(resultSet.getString("JOB_NAME"));
+				job.setLowestPay(resultSet.getFloat("LOWEST_PAY"));
+				job.setHighstPay(resultSet.getFloat("HIGHES_PAY"));
+			}
+				
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} finally{
+			DbUtil.closeAll(connection, preparedStatement, resultSet);
+		}
+			
+		return job;
+	}
+
+
+
+	public boolean updateJob(Job job) {
+		// TODO 自动生成的方法存根
+		
+		Connection connection = null;
+		
+		connection = DbUtil.getConnection();
+		String sqlString = "UPDATE job SET JOB_NAME=?,LOWEST_PAY=?,HIGHES_PAY=? WHERE JOB_ID=?";
+		PreparedStatement preparedStatement = null;
+		try {
+			preparedStatement = connection.prepareStatement(sqlString);
+			preparedStatement.setString(1, job.getJobName());
+			preparedStatement.setFloat(2, job.getLowestPay());
+			preparedStatement.setFloat(3, job.getHighstPay());
+			preparedStatement.setString(4, job.getJobId());
+			
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+			return false;
+		} finally{
+			DbUtil.closeAll(connection, preparedStatement);
+		}
+		return true;
+	}
 }

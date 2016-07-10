@@ -94,7 +94,7 @@ page language="java" contentType="text/html; charset=UTF-8"
 									<%=job.getHighstPay() %>
 								</td>
 								<td height="24" bgcolor="#FFFFFF">
-									<a href="UpdateJobs.jsp.html">修改</a>
+									<a href="admin/UpdateJobs.jsp?job_id=<%=job.getJobId() %>">修改</a>
 									<a href="javascript:del('<%=job.getJobId() %>')">删除</a>								</td>
 							</tr>
 						
