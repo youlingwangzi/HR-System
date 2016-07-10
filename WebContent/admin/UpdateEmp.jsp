@@ -52,7 +52,7 @@ int postStaffId = Integer.valueOf(request.getParameter("staff_id"));//用request
 				height="80"> </td>
           </tr>
           <tr>
-            <td height="24" align="right" bgcolor="#FFFFFF"><a href="default.jsp.html">首页</a> <a href="DeptViewServlet.html">部门查询</a> <a href="JobsViewServlet.html">职务查询</a> <a href="EmpViewServlet.html">员工查询</a> <a href="logout.jsp.html">退出登陆</a> </td>
+            <td height="24" align="right" bgcolor="#FFFFFF"><a href="default.jsp">首页</a> <a href="DeptViewServlet.html">部门查询</a> <a href="JobsViewServlet.html">职务查询</a> <a href="EmpViewServlet.html">员工查询</a> <a href="logout.jsp.html">退出登陆</a> </td>
           </tr>
           <tr>
             <td height="24" align="right" bgcolor="#0099CC"> 当前用户：admin 身份：

@@ -1,12 +1,29 @@
-
+<%@page import="cn.edu.lnu.persist.DepartmentDaoImpl"%>
+<%@page import="cn.edu.lnu.persist.DepartmentDao"%>
+<%@page import="cn.edu.lnu.domain.Department"%>
+<%@page import="cn.edu.lnu.persist.JobDaoImpl"%>
+<%@page import="cn.edu.lnu.persist.JobDao"%>
+<%@page import="cn.edu.lnu.domain.Job"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="cn.edu.lnu.persist.EmployeeDaoImpl"%>
+<%@page import="cn.edu.lnu.persist.EmployeeDao"%>
+<%@page import="cn.edu.lnu.domain.Staff"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+ <% 
+String path = request.getContextPath(); 
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/"; 
+String postDepartId = request.getParameter("depart_id");//用request得到 
+ %> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head>
+<head>
 		<title>更新部门数据</title>
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>
-
-	<body>
+<body>
 		<!-- 页面头部 -->
 		<table width="950" border="0" align="center" cellpadding="0"
 	cellspacing="0">
@@ -15,7 +32,7 @@
 				height="80"> </td>
           </tr>
           <tr>
-            <td height="24" align="right" bgcolor="#FFFFFF"><a href="default.jsp.html">首页</a> <a href="DeptViewServlet.html">部门查询</a> <a href="JobsViewServlet.html">职务查询</a> <a href="EmpViewServlet.html">员工查询</a> <a href="logout.jsp.html">退出登陆</a> </td>
+            <td height="24" align="right" bgcolor="#FFFFFF"><a href="default.jsp">首页</a> <a href="DeptViewServlet.html">部门查询</a> <a href="JobsViewServlet.html">职务查询</a> <a href="EmpViewServlet.html">员工查询</a> <a href="logout.jsp.html">退出登陆</a> </td>
           </tr>
           <tr>
             <td height="24" align="right" bgcolor="#0099CC"> 当前用户：admin 身份：
@@ -37,6 +54,13 @@
 									修改部门信息
 								</td>
 							</tr>
+							
+							<%
+							Department department = new Department();
+							DepartmentDao departmentDao = new DepartmentDaoImpl();
+							department = departmentDao.findDepartmentById(postDepartId);
+							%>
+							
 							<tr>
 								<td width="120" height="24" bgcolor="#FFFFFF">
 									部门编号
@@ -70,7 +94,7 @@
 							</tr>
 							<tr>
 								<td height="24" colspan="2" align="center" bgcolor="#FFFFFF">
-									<input type="button" name="Submit" value="更新" onClick="alert('更新部门数据成功');location.href='DeptViewServlet.html'">
+									<input type="submit" name="Submit" value="更新" onClick="alert('更新部门数据成功');location.href='DeptViewServlet.do'">
 									<input type="button" name="Submit2" value="取消"
 										onclick="history.back();">
 								</td>
