@@ -56,7 +56,7 @@ else{ adminAuthority = Integer.valueOf((String)session.getAttribute("adminAuthor
 
 <h1>员工查询</h1>
 		<table border="0" width="700" height="350" bgcolor="#ffffff"
-			align="center">
+			align="center" style="font-size:15px;">
 			<tr>
 				<td align="center" valign="top">
 					<table width="98%" border="0" cellpadding="5" cellspacing="1"
