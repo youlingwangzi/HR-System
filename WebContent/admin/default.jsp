@@ -36,21 +36,14 @@ else{ adminAuthority = Integer.valueOf((String)session.getAttribute("adminAuthor
 <h1>欢迎来到皇家人事管理系统</h1>
 <table align = center>
 <tr align = center>
-	<td border = 0 style = "width:300px"><a href = '../DepartViewServlet.do'> <img src = "../img/fileIcon.jpg" style = "width:150px"> </a></td>
+	<td border = 0 style = "height:240px;  width:300px"><a href = '../DepartViewServlet.do'> <img src = "../img/fileIcon.jpg" style = "width:150px"> </a></td>
 	<td border = 0 style = "width:300px"><a href = '../JobViewServlet.do'> <img src = "../img/userIcon.jpg" style = "width:150px"> </a></td>
+	<td border = 0 style = "height:240px; width:300px"><a href = '../EmpViewServlet.do?page=1'> <img src = "../img/staffIcon.gif" style = "width:150px"> </a></td>
 </tr>
 
 <tr align = center>
 	<td border = 0><h2>部门查询</h2></td>
 	<td border = 0><h2>职务查询</h2></td>
-</tr>
-
-
-<tr align = center>
-	<td border = 0 style = "width:300px"><a href = '../EmpViewServlet.do?page=1'> <img src = "../img/staffIcon.gif" style = "width:150px"> </a></td>
-</tr>
-
-<tr align = center>
 	<td border = 0><h2>员工查询</h2></td>
 </tr>
 
